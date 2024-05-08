@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Variables */
+:root {
+  --container-size: 960px;
+}
+
+/* Reset CSS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  max-width: var(--container-size);
+  margin: auto;
+}
+
+html {
+  font-family: "Libre Franklin", sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* common */
+#sas-number-cards > .sas-number-cards__card {
+    transition: all 0.6s ease-in-out;
+}
+.sas-footer-text {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 500;
+  order: 3;
+}
+
+#sas-actions__shuffle-btn,
+#sas-actions__sort-btn {
+  font-size: 0.75rem;
+  color: #ffffff;
+  width: 100%;
+  padding: 12px 12px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #72c3dc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  transition: all;
+  box-shadow: 0 4px #2b8ead;
+}
+
+.sas-actions {
+    transition: all 0.3s ease-in-out;
+}
+
+#sas-actions__shuffle-btn:active,
+#sas-actions__sort-btn:active {
+  box-shadow: 0 2px #2b8ead;
+  transform: translateY(4px);
+}
+
+/*  For screen size up to 375px  */
+@media screen and (max-width: 375px) {
+  h1 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: #333333;
+    padding: 4px 0;
+    color: #efefef;
+  }
+
+  .sas-wrapper {
+    background-color: #ffffff;
+    margin-top: 10px;
+    padding: 0 16px 50px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sas-number-cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    text-align: center;
+    order: 2;
+  }
+
+  #sas-number-cards > .sas-number-cards__card {
+    position: relative;
+    height: 40px;
+    margin-bottom: 4px;
+    background-color: #efefef;
+  }
+
+  #sas-number-cards > .sas-number-cards__card > .sas-number-cards__card__bg {
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    left: 0;
+  }
+
+  #sas-number-cards > .sas-number-cards__card::after {
+    content: attr(data-number);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    color: #000000;
+    font-weight: 500;
+  }
+
+  /* Buttons */
+  .sas-actions {
+    order: 1;
+    display: flex;
+    gap: 4px;
+    margin: 0 auto 16px auto;
+  }
+  #sas-actions__shuffle-btn,
+  #sas-actions__sort-btn {
+    width: 80px;
+    margin-bottom: 0;
+  }
+}
+
+/*  For screen size 376px onwards */
+@media screen and (min-width: 376px) {
+  h1 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #000000;
+  }
+  .sas-wrapper {
+    background-color: #efefef;
+    margin-top: 10px;
+    padding-bottom: 50px;
+    border-top: 5px solid #bfbfbf;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+
+  #sas-number-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    text-align: center;
+    order: 1;
+  }
+
+  #sas-number-cards > .sas-number-cards__card {
+    position: relative;
+  }
+
+  #sas-number-cards > .sas-number-cards__card::after {
+    content: attr(data-number);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  #sas-number-cards > .sas-number-cards__card > .sas-number-cards__card__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  #sas-number-cards > .sas-number-cards__card::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+  /* Buttons */
+  .sas-actions {
+    position: sticky;
+    height: fit-content;
+    top:0;
+    padding: 24px 20px 0px 20px;
+    order: 2;
+  }
+}
+
+/* Extra MQ for responsive numnber inside squares */
+@media screen and (min-width: 376px) and (max-width: 600px) {
+  #sas-number-cards > .sas-number-cards__card::after {
+    font-size: 3rem;
+  }
+}
